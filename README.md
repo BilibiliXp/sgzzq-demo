@@ -6,16 +6,16 @@ This repository distributes the Windows, macOS, and Android playable demo of 正
 
 ## 下载 / Downloads
 
-**[打开版本下载页面 / View releases](https://github.com/BilibiliXp/sgzzq-demo/releases)**
+**[打开版本下载页面 / View releases](https://github.com/BilibiliXp/sgzzq-demo/releases/latest)**
 
-当前试玩版本：**v1.3.1.1**
+当前试玩版本：**v1.4.1.1**
 
 | 平台 / Platform | 下载 / Download |
 | --- | --- |
-| Windows | [Windows EXE](https://github.com/BilibiliXp/sgzzq-demo/releases/download/v1.3.1.1/sgzzq-v1.3.1.1-windows.exe) |
-| Android / 安卓 | [Android APK](https://github.com/BilibiliXp/sgzzq-demo/releases/download/v1.3.1.1/sgzzq-v1.3.1.1-android.apk) |
-| macOS / Apple 芯片（M1 及以后） | [Mac arm64 DMG](https://github.com/BilibiliXp/sgzzq-demo/releases/download/v1.3.1.1/sgzzq-v1.3.1.1-macos-arm64.dmg) |
-| macOS / Intel | [Mac Intel DMG](https://github.com/BilibiliXp/sgzzq-demo/releases/download/v1.3.1.1/sgzzq-v1.3.1.1-macos-x64.dmg) |
+| Windows | [Windows EXE](https://github.com/BilibiliXp/sgzzq-demo/releases/download/v1.4.1.1/sgzzq-v1.4.1.1-windows.exe) |
+| Android / 安卓 | [Android APK](https://github.com/BilibiliXp/sgzzq-demo/releases/download/v1.4.1.1/sgzzq-v1.4.1.1-android.apk) |
+| macOS / Apple 芯片（M1 及以后） | [Mac arm64 DMG](https://github.com/BilibiliXp/sgzzq-demo/releases/download/v1.4.1.1/sgzzq-v1.4.1.1-macos-arm64.dmg) |
+| macOS / Intel | [Mac Intel DMG](https://github.com/BilibiliXp/sgzzq-demo/releases/download/v1.4.1.1/sgzzq-v1.4.1.1-macos-x64.dmg) |
 
 ## 使用说明 / Getting started
 
