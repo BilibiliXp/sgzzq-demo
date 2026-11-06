@@ -1,0 +1,52 @@
+name: Import verified Mac demo packages
+on:
+  workflow_dispatch:
+    inputs:
+      arm64_url:
+        required: true
+        type: string
+      x64_url:
+        required: true
+        type: string
+      release_tag:
+        required: true
+        type: string
+permissions:
+  contents: write
+jobs:
+  import:
+    runs-on: ubuntu-latest
+    timeout-minutes: 15
+    env:
+      GH_TOKEN: ${{ github.token }}
+      GH_REPO: ${{ github.repository }}
+      ARM64_URL: ${{ inputs.arm64_url }}
+      X64_URL: ${{ inputs.x64_url }}
+      RELEASE_TAG: ${{ inputs.release_tag }}
+    steps:
+      - name: Verify and upload existing Mac build artifacts
+        shell: python
+        run: |
+          import os, re, pathlib, urllib.request, zipfile, hashlib, subprocess
+          tag = os.environ["RELEASE_TAG"]
+          assert re.fullmatch(r"v\d+\.\d+\.\d+\.\d+", tag)
+          for arch in ["arm64", "x64"]:
+              url = os.environ[arch.upper() + "_URL"]
+              assert url.startswith("https://")
+              print("::add-mask::" + url, flush=True)
+              folder = pathlib.Path(arch)
+              folder.mkdir()
+              archive = folder / "artifact.zip"
+              urllib.request.urlretrieve(url, archive)
+              with zipfile.ZipFile(archive) as z:
+                  for name in z.namelist():
+                      assert (folder / name).resolve().is_relative_to(folder.resolve())
+                  z.extractall(folder)
+              dmg = next(folder.rglob("*.dmg"))
+              expected = next(folder.rglob("*.sha256")).read_text().split()[0]
+              actual = hashlib.sha256(dmg.read_bytes()).hexdigest()
+              assert actual == expected
+              target = folder / ("sgzzq-" + tag + "-macos-" + arch + ".dmg")
+              dmg.rename(target)
+              subprocess.run(["gh", "release", "upload", tag, str(target)], check=True)
+              print(arch + " SHA256 " + actual, flush=True)
